@@ -5,27 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wonderstone Workshop</title>
     <style>
-        /* General Reset and Font Import (You'll need to define your actual font) */
+        /* General Reset and Font Import */
         body {
             margin: 0;
             padding: 0;
-            font-family: sans-serif; /* Replace with your actual dark, fantasy font */
-            color: #E0E0E0; /* Light gray text for contrast */
-            background-color: #121212; /* Dark background fallback */
+            font-family: sans-serif;
+            color: #E0E0E0; 
+            background-color: #121212; 
         }
 
         /* --- Hero Section Styling (The Main Image & PARALLAX) --- */
         .hero-section {
             width: 100%;
-            height: 100vh; /* Make it take up the full screen height */
-            /* !!! 🛑 CHECK THIS FILENAME CASE 🛑 !!! */
-            background-image: url('YOUR_BACKGROUND_IMAGE_URL.jpg');
+            height: 100vh;
+            /* !!! 🛑 REPLACE THIS with YOUR exact filename (e.g., 'Hero_Background.jpg') 🛑 !!! */
+            background-image: url('YOUR_BACKGROUND_IMAGE_URL.JPG'); 
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            /* 👇 PARALLAX EFFECT */
-            background-attachment: fixed; 
-            /* ----------------------------------------------------------------- */
+            background-attachment: fixed; /* DESKTOP PARALLAX */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -34,7 +32,7 @@
             padding-top: 20px;
         }
 
-        /* --- Navigation Bar --- */
+        /* --- Navigation Bar (Desktop Default) --- */
         .navbar {
             width: 90%;
             max-width: 1200px;
@@ -45,9 +43,7 @@
         }
 
         .logo-container img {
-            /* 👇 ADJUSTED LOGO HEIGHT */
-            height: 60px; 
-            /* ------------------------ */
+            height: 60px; /* DESKTOP LOGO HEIGHT */
             filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
         }
 
@@ -64,9 +60,7 @@
         /* --- Main Content (Headlines and Form) --- */
         .main-content {
             position: absolute;
-            /* 👇 TEXT POSITION */
-            top: 25%; 
-            /* ----------------------------------------------------- */
+            top: 25%; /* DESKTOP TEXT POSITION */
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -104,15 +98,14 @@
             font-size: 1.1em;
             margin-bottom: 10px;
         }
-
-        /* Style the inputs to match the dark, stylized look */
+        
+        /* Form Styling (PLACEHOLDER STYLES) */
         .custom-form-container {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-top: 10px;
         }
-
         .custom-form-container input[type="email"] {
             padding: 12px 20px;
             border: 2px solid #504070; 
@@ -122,7 +115,6 @@
             width: 60%;
             font-size: 1em;
         }
-
         .custom-form-container button {
             padding: 12px 25px;
             border: none;
@@ -134,7 +126,6 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         .custom-form-container button:hover {
             background-color: #7B68EE; 
         }
@@ -142,37 +133,161 @@
         /* --- New Section Styling (Black & Blank) --- */
         .new-section {
             width: 100%;
-            min-height: 100vh; /* Takes up at least one full screen height to allow scrolling */
-            background-color: #000000; /* Pure black as requested */
+            min-height: 100vh;
+            background-color: #000000;
             padding: 50px 0; 
-            z-index: 10; /* Ensures it sits on top of the fixed background */
+            z-index: 10;
         }
-       /* --- Tablet Optimization (Media Query) --- */
+
+        /* --- PRODUCT DETAILS SECTION STYLES --- */
+        .product-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 50px;
+        }
+        .text-content {
+            flex: 2;
+            color: #F0F0F0;
+            line-height: 1.6;
+        }
+        .image-content {
+            flex: 1;
+            text-align: center;
+        }
+        .text-content h2 {
+            font-size: 2.5em;
+            color: #FFFFFF;
+            margin-top: 0;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .text-content .subtitle {
+            font-size: 1.2em;
+            font-style: italic;
+            color: #B0B0B0;
+            margin-bottom: 25px;
+        }
+        .adventure-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .adventure-list li {
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #A08CDA; /* Light purple color for emphasis */
+        }
+        .product-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(106, 90, 205, 0.4); 
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #FFFFFF;
+            margin-top: 30px;
+        }
+        .new-release-badge {
+            display: inline-block;
+            background-color: #6A5ACD; 
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .buy-button {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            background-color: #6A5ACD;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: 0 0 10px rgba(106, 90, 205, 0.6);
+        }
+        .buy-button:hover {
+            background-color: #7B68EE;
+            transform: translateY(-2px);
+        }
+
+        /* --- TABLET OPTIMIZATION (Fixing Crop, Spacing, and Parallax) --- */
         @media (min-width: 768px) and (max-width: 1024px) {
-            /* 1. FIX BACKGROUND CROPPING: Use contain to ensure the whole image is visible */
+            /* Fix broken parallax on iOS/mobile */
             .hero-section {
-                background-size: 300% auto; /* Significantly zoom out and prioritize width */
-                background-position: 70% 30%; /* Shift the image far right (70%) and slightly down (30%) to frame the scene */
+                background-attachment: scroll !important; 
+                /* Shift image right (70%) and slightly up (30%) to reveal character */
+                background-position: 70% 30%; 
+                /* Zoom out the background slightly to show more of the scene */
+                background-size: 140% auto; 
             }
 
-            /* 2. FIX OVERSIZED LOGO & NAV (Keeping previous successful fixes) */
+            /* Shrink Nav and Logo */
             .logo-container img {
-                height: 30px; 
+                height: 30px;
             }
             .nav-links a {
                 font-size: 0.75rem; 
                 margin-left: 10px;
             }
 
-            /* 3. FIX TEXT POSITION (Shifting down slightly for better framing) */
+            /* Adjust Text and Form Position */
             .main-content {
                 top: 45%; 
             }
-            
-            /* 4. FIX FORM POSITION */
             .mailing-list {
                 bottom: 10%;
-    }
+            }
+            
+            /* Responsive Product Section Stacking */
+            .product-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .text-content, .image-content {
+                flex: auto;
+                width: 100%;
+            }
+        }
+        /* Mobile View (Below Tablet) */
+        @media (max-width: 767px) {
+             .hero-section {
+                background-attachment: scroll !important; 
+                background-position: 50% 30%; 
+                background-size: 200% auto; 
+            }
+             .logo-container img {
+                height: 25px;
+            }
+            .nav-links a {
+                font-size: 0.65rem; 
+                margin-left: 5px;
+            }
+             .main-content {
+                top: 20%; 
+            }
+             .mailing-list {
+                bottom: 5%;
+            }
+        }
 
     </style>
 </head>
@@ -207,7 +322,34 @@
 
 </div> 
 <div class="new-section">
-    <h2 style="text-align: center; color: white; padding-top: 200px;">This is the new scrolling section!</h2>
+    <div class="product-container">
+        <div class="text-content">
+            <div class="new-release-badge">NEW RELEASE</div>
+            
+            <h2>Baldur's Gate: Upper City Intrigue</h2>
+            <p class="subtitle">Five Short, Sharp Adventures from Beyond the Old Wall.</p>
+            
+            <p>For use with the 2024 revision of the Dungeons & Dragons fifth edition core rules</p>
+            <p>Easy-to-prepare adventures, set against the ideal backdrop for schemes and deceit:</p>
+            
+            <ul class="adventure-list">
+                <li><strong class="highlight">"Joust of the Oathbreaker"</strong> (level 3) Compete in a jousting tournament on the Wide against a wicked orc knight riding a giant lizard.</li>
+                <li><strong class="highlight">"Masque Macabre"</strong> (level 4) Infiltrate a decadent masquerade among wealthy Bhaal cultists at Ravenshade Manor, hosted by a murderous vampire patriar.</li>
+                <li><strong class="highlight">"The Wonderstone Job"</strong> (level 5) Pull off a heist under the Hall of Wonders in a vault full of mechanical traps and clockwork monsters.</li>
+                <li><strong class="highlight">"Tower of Chaos"</strong> (level 6) Tame a tumultuous storm of wild magic that has engulfed Ramazith's Tower and uncover its alien origin.</li>
+                <li><strong class="highlight">"High Stakes"</strong> (level 7) Play politics in High Hall among reptilian spies and parliamentary mummies as you elect the next duke to the Council of Four.</li>
+            </ul>
+            
+            <p class="price">Price: $4.95</p>
+            <p class="more-info">More info available at the <a href="#" target="_blank">Dungeon Master's Guild</a></p>
+        </div>
+        
+        <div class="image-content">
+            <img src="BALDURS_GATE_UPPER_CITY_INTRIGUE.png" alt="Baldur's Gate Product Cover" class="product-image">
+            
+            <button class="buy-button">Buy Here</button>
+        </div>
+    </div>
 </div>
 </body>
 </html>
