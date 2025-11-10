@@ -291,27 +291,57 @@
                 width: 100%;
             }
         }
-        /* Mobile View (Below Tablet) */
-        @media (max-width: 767px) {
-             .hero-section {
-                background-attachment: scroll !important; 
-                background-position: 50% 30%; 
-                background-size: 200% auto; 
-            }
-             .logo-container img {
-                height: 25px;
-            }
-            .nav-links a {
-                font-size: 0.65rem; 
-                margin-left: 5px;
-            }
-             .main-content {
-                top: 20%; 
-            }
-             .mailing-list {
-                bottom: 5%;
-            }
+       /* Mobile View (Below Tablet) */
+    @media (max-width: 767px) {
+         .hero-section {
+            background-attachment: scroll !important; 
+            background-position: 50% 30%; 
+            background-size: 200% auto; 
         }
+         .logo-container img {
+            height: 25px;
+        }
+        .nav-links a {
+            font-size: 0.65rem; 
+            margin-left: 5px;
+        }
+
+        /* H1/Tagline Fix */
+        .main-content h1 {
+            font-size: 2.5em; /* Shrink H1 */
+            line-height: 1.1;
+        }
+         .main-content p {
+            font-size: 1.0em; /* Shrink tagline */
+        }
+         .main-content {
+            top: 45%; /* Move position down to better frame the image */
+        }
+         .mailing-list {
+            bottom: 5%;
+        }
+
+        /* Product Section Stacking Fix */
+        .product-container, .product-container.reversed {
+            flex-direction: column; 
+            align-items: center;
+        }
+        .image-content {
+            order: -1; /* Forces image to appear above text on mobile */
+        }
+        .text-content {
+            width: 90%; /* Ensure full-side to side flow */
+            text-align: left; 
+        }
+        .text-content h2, .text-content .subtitle, .new-release-badge, .coming-soon-badge {
+            text-align: center; /* Center the title/badge/subtitle */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .text-content h2 {
+            font-size: 2em;
+        }
+    }
 
     </style>
 </head>
