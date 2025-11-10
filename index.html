@@ -93,45 +93,28 @@
             margin-bottom: 10px;
         }
         
-        /* FORM STYLING OVERRIDES FOR BREVO */
-        /* Forces the form itself to be a flex container for centering inputs */
-        .mailing-list form { 
-            display: flex !important;
-            justify-content: center !important;
-            gap: 10px !important;
-            margin-top: 10px !important;
-            flex-wrap: wrap !important;
-            width: 100% !important; 
-            max-width: 500px !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            background: none !important;
-            border: none !important;
+        /* RESTORED FUNCTIONAL PLACEHOLDER STYLING */
+        .custom-form-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap; /* Added for mobile responsiveness */
         }
-        /* Style Brevo Input Field */
-        .mailing-list input[type="email"],
-        .mailing-list .sib-email-area input[type="text"] {
-            padding: 12px 20px !important;
-            border: 2px solid #504070 !important;
-            border-radius: 5px !important;
-            background-color: rgba(20, 20, 30, 0.8) !important;
-            color: white !important;
-            width: 100% !important; 
-            max-width: 300px !important; 
-            font-size: 1em !important;
-            box-sizing: border-box !important;
-            flex-grow: 1 !important;
-            margin: 0 !important;
+        .custom-form-container input[type="email"] {
+            padding: 12px 20px;
+            border: 2px solid #504070; 
+            border-radius: 5px;
+            background-color: rgba(20, 20, 30, 0.8);
+            color: white;
+            width: 60%;
+            font-size: 1em;
+            flex-grow: 1;
+            box-sizing: border-box;
+            max-width: 300px;
         }
-        /* Style Brevo Subscribe Button */
-        .mailing-list button[type="submit"],
-        .mailing-list .sib-form-block__button {
-            padding: 12px 25px !important;
-            border: none !important;
-            border-radius: 5px !important;
-            background-color: #6A5ACD !important;
-            color: white !important;
-            font-size: 1em !important;
-            font-weight: bold !important;
-            cursor: pointer !important;
-            transition
+        .custom-form-container button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6A5ACD
