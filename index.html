@@ -147,32 +147,31 @@
             padding: 50px 0; 
             z-index: 10; /* Ensures it sits on top of the fixed background */
         }
-        
        /* --- Tablet Optimization (Media Query) --- */
-    @media (min-width: 768px) and (max-width: 1024px) {
-        /* 1. FIX BACKGROUND CROPPING */
-        .hero-section {
-            background-position: 70% center; /* Set position to 70% */
-        }
+        @media (min-width: 768px) and (max-width: 1024px) {
+            /* 1. FIX BACKGROUND CROPPING: Use contain to ensure the whole image is visible */
+            .hero-section {
+                background-size: 140% auto; /* Significantly zoom out and prioritize width */
+                background-position: 70% 30%; /* Shift the image far right (70%) and slightly down (30%) to frame the scene */
+            }
 
-        /* 2. FIX OVERSIZED LOGO & NAV */
-        .logo-container img {
-            height: 30px; /* Set logo height to 30px */
-        }
-        .nav-links a {
-            font-size: 0.75rem; /* Set font size to 0.75rem */
-            margin-left: 10px;
-        }
+            /* 2. FIX OVERSIZED LOGO & NAV (Keeping previous successful fixes) */
+            .logo-container img {
+                height: 30px; 
+            }
+            .nav-links a {
+                font-size: 0.75rem; 
+                margin-left: 10px;
+            }
 
-        /* 3. FIX TEXT POSITION */
-        .main-content {
-            top: 45%; /* Set top position to 45% */
-        }
-
-        /* 4. FIX FORM POSITION */
-        .mailing-list {
-            bottom: 10%; /* Set bottom position to 10% */
-        }
+            /* 3. FIX TEXT POSITION (Shifting down slightly for better framing) */
+            .main-content {
+                top: 45%; 
+            }
+            
+            /* 4. FIX FORM POSITION */
+            .mailing-list {
+                bottom: 10%;
     }
 
     </style>
