@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
+            font-family: sans-serif; 
             color: #E0E0E0; 
             background-color: #121212; 
         }
@@ -18,12 +18,12 @@
         .hero-section {
             width: 100%;
             height: 100vh;
-            /* !!! 🛑 REPLACE THIS with YOUR exact filename (e.g., 'Hero_Background.jpg') 🛑 !!! */
+            /* !!! ✅ CORRECTED IMAGE EXTENSION TO LOWERCASE .jpg ✅ !!! */
             background-image: url('YOUR_BACKGROUND_IMAGE_URL.jpg'); 
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* DESKTOP PARALLAX */
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -43,10 +43,9 @@
         }
 
         .logo-container img {
-            height: 60px; /* DESKTOP LOGO HEIGHT */
+            height: 60px;
             filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
         }
-
         .nav-links a {
             color: #E0E0E0;
             text-decoration: none;
@@ -60,7 +59,7 @@
         /* --- Main Content (Headlines and Form) --- */
         .main-content {
             position: absolute;
-            top: 25%; /* DESKTOP TEXT POSITION */
+            top: 25%;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -75,7 +74,6 @@
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
             letter-spacing: 2px;
         }
-
         .main-content p {
             font-size: 1.5em;
             margin-top: 0;
@@ -93,7 +91,6 @@
             max-width: 500px;
             text-align: center;
         }
-
         .mailing-list .sign-up-text {
             font-size: 1.1em;
             margin-bottom: 10px;
@@ -150,6 +147,9 @@
             align-items: flex-start;
             gap: 50px;
         }
+        .product-container.reversed {
+            flex-direction: row-reverse; /* Reverses order for the second product */
+        }
         .text-content {
             flex: 2;
             color: #F0F0F0;
@@ -197,9 +197,10 @@
             color: #FFFFFF;
             margin-top: 30px;
         }
+        /* RELEASE BADGES */
         .new-release-badge {
             display: inline-block;
-            background-color: #6A5ACD; 
+            background-color: #6A5ACD; /* Purple */
             color: white;
             padding: 5px 12px;
             border-radius: 4px;
@@ -209,6 +210,19 @@
             margin-bottom: 10px;
             text-transform: uppercase;
         }
+        .coming-soon-badge {
+            display: inline-block;
+            background-color: #FF7F50; /* Coral/Orange for contrast */
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        /* Buy Button Styling */
         .buy-button {
             padding: 15px 40px;
             border: none;
@@ -228,17 +242,15 @@
             transform: translateY(-2px);
         }
 
-        /* --- TABLET OPTIMIZATION (Fixing Crop, Spacing, and Parallax) --- */
+        /* --- TABLET/MOBILE OPTIMIZATION --- */
+        /* Tablet view (768px - 1024px) */
         @media (min-width: 768px) and (max-width: 1024px) {
-            /* Fix broken parallax on iOS/mobile */
+            /* Fix broken parallax on iOS/mobile, zoom out, shift position */
             .hero-section {
                 background-attachment: scroll !important; 
-                /* Shift image right (70%) and slightly up (30%) to reveal character */
                 background-position: 70% 30%; 
-                /* Zoom out the background slightly to show more of the scene */
                 background-size: 140% auto; 
             }
-
             /* Shrink Nav and Logo */
             .logo-container img {
                 height: 30px;
@@ -247,7 +259,6 @@
                 font-size: 0.75rem; 
                 margin-left: 10px;
             }
-
             /* Adjust Text and Form Position */
             .main-content {
                 top: 45%; 
@@ -255,101 +266,8 @@
             .mailing-list {
                 bottom: 10%;
             }
-            
-            /* Responsive Product Section Stacking */
-            .product-container {
+            /* Stack product columns vertically */
+            .product-container, .product-container.reversed {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-            }
-            .text-content, .image-content {
-                flex: auto;
-                width: 100%;
-            }
-        }
-        /* Mobile View (Below Tablet) */
-        @media (max-width: 767px) {
-             .hero-section {
-                background-attachment: scroll !important; 
-                background-position: 50% 30%; 
-                background-size: 200% auto; 
-            }
-             .logo-container img {
-                height: 25px;
-            }
-            .nav-links a {
-                font-size: 0.65rem; 
-                margin-left: 5px;
-            }
-             .main-content {
-                top: 20%; 
-            }
-             .mailing-list {
-                bottom: 5%;
-            }
-        }
-
-    </style>
-</head>
-<body>
-
-<div class="hero-section">
-    <div class="navbar">
-        <div class="logo-container">
-            <img src="WONDERSTONE_LOGO.png" alt="Wonderstone Workshop Logo">
-        </div>
-        <div class="nav-links">
-            <a href="#">STORE</a>
-            <a href="#">PATREON</a>
-            <a href="#">CONTACT</a>
-            <a href="#">ABOUT</a>
-        </div>
-    </div>
-
-    <div class="main-content">
-        <h1>WONDERSTONE WORKSHOP</h1>
-        <p>Inspired TTRPG Creations</p>
-    </div>
-
-    <div class="mailing-list">
-        <p class="sign-up-text">Sign up for our Newsletter now</p>
-        
-        <div id="mailing-list-form-placeholder" class="custom-form-container">
-            <input type="email" placeholder="Email" required>
-            <button type="submit">Subscribe</button>
-        </div>
-        </div>
-
-</div> 
-<div class="new-section">
-    <div class="product-container">
-        <div class="text-content">
-            <div class="new-release-badge">NEW RELEASE</div>
-            
-            <h2>Baldur's Gate: Upper City Intrigue</h2>
-            <p class="subtitle">Five Short, Sharp Adventures from Beyond the Old Wall.</p>
-            
-            <p>For use with the 2024 revision of the Dungeons & Dragons fifth edition core rules</p>
-            <p>Easy-to-prepare adventures, set against the ideal backdrop for schemes and deceit:</p>
-            
-            <ul class="adventure-list">
-                <li><strong class="highlight">"Joust of the Oathbreaker"</strong> (level 3) Compete in a jousting tournament on the Wide against a wicked orc knight riding a giant lizard.</li>
-                <li><strong class="highlight">"Masque Macabre"</strong> (level 4) Infiltrate a decadent masquerade among wealthy Bhaal cultists at Ravenshade Manor, hosted by a murderous vampire patriar.</li>
-                <li><strong class="highlight">"The Wonderstone Job"</strong> (level 5) Pull off a heist under the Hall of Wonders in a vault full of mechanical traps and clockwork monsters.</li>
-                <li><strong class="highlight">"Tower of Chaos"</strong> (level 6) Tame a tumultuous storm of wild magic that has engulfed Ramazith's Tower and uncover its alien origin.</li>
-                <li><strong class="highlight">"High Stakes"</strong> (level 7) Play politics in High Hall among reptilian spies and parliamentary mummies as you elect the next duke to the Council of Four.</li>
-            </ul>
-            
-            <p class="price">Price: $4.95</p>
-            <p class="more-info">More info available at the <a href="#" target="_blank">Dungeon Master's Guild</a></p>
-        </div>
-        
-        <div class="image-content">
-            <img src="BALDURS_GATE_UPPER_CITY_INTRIGUE.png" alt="Baldur's Gate Product Cover" class="product-image">
-            
-            <button class="buy-button">Buy Here</button>
-        </div>
-    </div>
-</div>
-</body>
-</html>
