@@ -77,7 +77,7 @@
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
         }
 
-        /* --- Mailing List Section --- */
+        /* --- Mailing List Section (STYLING REMOVED FROM BODY HTML) --- */
         .mailing-list {
             position: absolute;
             bottom: 20%; 
@@ -91,8 +91,6 @@
             font-size: 1.1em;
             margin-bottom: 10px;
         }
-        
-        /* RESTORED FUNCTIONAL PLACEHOLDER STYLING */
         .custom-form-container {
             display: flex;
             justify-content: center;
@@ -188,6 +186,58 @@
             .text-content h2 { font-size: 2em; }
         }
 
+        /* --- Footer Styling (CSS) --- */
+        .site-footer {
+            background-color: #000000;
+            color: #A0A0A0; 
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        .footer-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center footer blocks */
+            align-items: flex-start;
+        }
+        .footer-block {
+            flex-basis: 30%;
+            min-width: 250px;
+            margin: 0 20px 20px 20px; /* Added margins for spacing */
+            text-align: center; /* Centered all text */
+        }
+        .footer-block h3 {
+            color: #6A5ACD;
+            font-size: 1.1em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Social Icon Styling (Fixed) */
+        .social-icons a {
+            color: #F0F0F0; 
+            font-size: 1.1em; 
+            margin: 0 10px; /* Center-aligned spacing */
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block; /* Aligned icons horizontally */
+        }
+        .social-icons a:hover {
+            color: #FFFFFF;
+        }
+        .copyright {
+            flex-basis: 100%;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #333;
+            text-align: center;
+            font-size: 0.85em;
+        }
+
     </style>
 </head>
 <body>
@@ -262,5 +312,31 @@
         </div>
     </div>
 </div>
+<footer class="site-footer">
+    <div class="footer-container">
+        
+        <div class="footer-block" style="text-align: center; flex-basis: 30%;">
+            <h3>Contact</h3>
+            <p style="font-size: 1em;">
+                Email: <a href="mailto:wonderstoneworkshop@gmail.com" style="color: #A08CDA; text-decoration: none;">
+                    wonderstoneworkshop@gmail.com
+                </a>
+            </p>
+        </div>
+
+        <div class="footer-block social-links" style="text-align: center; flex-basis: 30%;">
+            <h3>Join the Adventure</h3>
+            <div class="social-icons">
+                <a href="https://instagram.com/wonderstoneworkshop" target="_blank">Instagram</a>
+                <a href="https://x.com/wonderstonerpg" target="_blank">X (Twitter)</a>
+                <a href="https://www.reddit.com/user/WonderstoneWorkshop/" target="_blank">Reddit</a>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2025 Wonderstone Workshop. All Rights Reserved.
+        </div>
+    </div>
+</footer>
 </body>
 </html>
