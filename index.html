@@ -121,6 +121,10 @@
             box-shadow: 0 0 20px rgba(106, 90, 205, 0.4);
         }
 
+        .image-figure { margin: 0; width: 100%; max-width: 300px; }
+        .image-credit { margin-top: 8px; font-size: 0.75rem; color: #888; text-align: center; }
+        .image-credit a { color: #999; }
+
         /* Placeholder covers for products that don't have art yet */
         .cover-card {
             width: 100%;
@@ -308,10 +312,10 @@
             <p class="price"><strong class="highlight">Releasing this month!</strong></p>
         </div>
         <div class="product-media">
-            <div class="cover-card cover-goody" role="img" aria-label="I Saw Goody Ann Dancing with the Devil">
-                <div class="cover-title display-font">I Saw Goody Ann Dancing with the Devil</div>
-                <div class="cover-sub">A One-Page RPG</div>
-            </div>
+            <figure class="image-figure">
+                <img src="GOODY_ANN.jpg" width="1368" height="1181" alt="Woodcut of witches and devils dancing in a circle" class="product-image" loading="lazy">
+                <figcaption class="image-credit">Woodcut courtesy of <a href="https://wellcomecollection.org/" target="_blank" rel="noopener">Wellcome Collection</a> (CC BY 4.0)</figcaption>
+            </figure>
         </div>
     </section>
 
