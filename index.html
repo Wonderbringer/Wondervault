@@ -54,6 +54,15 @@
             background-repeat: no-repeat;
         }
 
+        /*
+         * Parallax only on computers with a mouse. Phones and tablets
+         * handle fixed backgrounds badly (ignored, zoomed, or jumpy),
+         * so they keep the normal scrolling background.
+         */
+        @media (hover: hover) and (pointer: fine) and (min-width: 1025px) {
+            .hero { background-attachment: fixed; }
+        }
+
         .navbar {
             width: 100%;
             max-width: 1200px;
