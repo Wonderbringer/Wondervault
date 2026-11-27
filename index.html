@@ -205,23 +205,28 @@
             padding: 0;
         }
 
+        /*
+         * Each product has four parts: head (badge, title, subtitle),
+         * media (cover), text (description, price) and buy (button).
+         * Phones stack them in that order; wider screens put the cover
+         * (with the button under it) beside the head and text.
+         */
         .product {
             width: min(90%, 1000px);
             margin: 0 auto;
             padding: 50px 0;
             display: grid;
-            grid-template-columns: 1fr;      /* phones: one column, cover on top */
-            gap: 30px;
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas: "head" "media" "text" "buy";
         }
         /* Divider between products (hidden ones don't leave a stray line) */
         .product + .product:not([hidden]) { border-top: 1px solid #1d1d1d; }
 
-        .product-media {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 20px;
-        }
+        .product-head  { grid-area: head; }
+        .product-media { grid-area: media; margin: 10px 0 30px; }
+        .product-text  { grid-area: text; }
+        .product-buy   { grid-area: buy; margin-top: 10px; }
+        .product-head .subtitle:last-child, .product-head .meta:last-child { margin-bottom: 0; }
 
         .product-image {
             width: 100%;
@@ -233,7 +238,7 @@
         .image-credit { margin-top: 8px; font-size: 0.75rem; color: #888; text-align: left; }
         .image-credit a { color: #999; }
 
-        .product-text h2 {
+        .product-head h2 {
             margin: 0 0 5px;
             font-size: clamp(1.8rem, 5vw, 2.5rem);
             line-height: 1.2;
@@ -312,20 +317,28 @@
             .buy-button { transition: none; }
         }
 
-        /* Product text is left-aligned on every screen size */
-
         /* Wider screens: two columns, alternating sides */
         @media (min-width: 800px) {
             .product {
-                grid-template-columns: 2fr 1fr;
-                gap: 50px;
+                grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+                grid-template-rows: auto auto 1fr;
+                grid-template-areas:
+                    "head  media"
+                    "text  media"
+                    "text  buy";
+                column-gap: 50px;
                 align-items: start;
             }
-            .product.reversed { grid-template-columns: 1fr 2fr; }
-            .product.reversed .product-media { order: -1; }
-        }
-        @media (max-width: 799px) {
-            .product-media { order: -1; }
+            .product.reversed {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+                grid-template-areas:
+                    "media head"
+                    "media text"
+                    "buy   text";
+            }
+            .product-head  { margin-bottom: 20px; }
+            .product-media { margin: 0; }
+            .product-buy   { margin-top: 20px; }
         }
 
         /* ---------- About ---------- */
@@ -434,12 +447,15 @@
 
     <!-- ===== Malice's Pits & Pendulums (coming soon) ===== -->
     <section class="product" id="pits-and-pendulums">
-        <div class="product-text">
+        <div class="product-head">
             <div class="badge-row"><span class="badge badge-soon">Coming Soon</span></div>
             <h2>Malice's Pits &amp; Pendulums</h2>
             <p class="subtitle">A Charming Assortment of Entirely Avoidable Disasters.</p>
-            <p class="meta">For use with the 2024 revision of the Dungeons &amp; Dragons fifth edition core rules</p>
-
+        </div>
+        <div class="product-media">
+            <img src="MALICES_PITS_AND_PENDULUMS.jpg" width="984" height="1278" alt="Malice's Pits &amp; Pendulums cover" class="product-image" loading="lazy">
+        </div>
+        <div class="product-text">
             <p>Malice the Clever, this plane's greatest designer of traps, shares a sampling of her most devious designs. Build them into your dungeon keeps and treasure houses to lure unwitting thieves to any number of demises, all while your true treasure stays safely hidden. Each trap comes with clear ways to detect, disarm, or destroy it, so clever players always have a fighting chance.</p>
             <ul class="item-list">
                 <li><strong class="highlight">Wrecking Bhaal:</strong> Step on the wrong plate and a giant metal skull drops from the ceiling, then swings wildly around the sealed chamber.</li>
@@ -451,19 +467,19 @@
 
             <p class="price"><strong class="highlight">Release date coming soon!</strong></p>
         </div>
-        <div class="product-media">
-            <img src="MALICES_PITS_AND_PENDULUMS.jpg" width="984" height="1278" alt="Malice's Pits &amp; Pendulums cover" class="product-image" loading="lazy">
-        </div>
     </section>
 
     <!-- ===== Baldur's Gate: Upper City Intrigue ===== -->
     <section class="product reversed" id="baldurs-gate">
-        <div class="product-text">
+        <div class="product-head">
             <div class="badge-row"><span class="badge badge-new">Available Now</span></div>
             <h2>Baldur's Gate: Upper City Intrigue</h2>
             <p class="subtitle">Five Short, Sharp Adventures from Beyond the Old Wall.</p>
-
-            <p>For use with the 2024 revision of the Dungeons &amp; Dragons fifth edition core rules.</p>
+        </div>
+        <div class="product-media">
+            <img src="BALDURS_GATE_UPPER_CITY_INTRIGUE.png" width="612" height="792" alt="Baldur's Gate: Upper City Intrigue cover" class="product-image" loading="lazy">
+        </div>
+        <div class="product-text">
             <p>Easy-to-prepare adventures, set against the ideal backdrop for schemes and deceit:</p>
 
             <ul class="item-list">
@@ -477,8 +493,7 @@
             <p class="price">Price: $4.95</p>
             <p>More info available at the <a href="https://www.dmsguild.com/en/product/544478/baldur-s-gate-upper-city-intrigue" target="_blank" rel="noopener">Dungeon Master's Guild</a></p>
         </div>
-        <div class="product-media">
-            <img src="BALDURS_GATE_UPPER_CITY_INTRIGUE.png" width="612" height="792" alt="Baldur's Gate: Upper City Intrigue cover" class="product-image" loading="lazy">
+        <div class="product-buy">
             <a href="https://www.dmsguild.com/en/product/544478/baldur-s-gate-upper-city-intrigue" target="_blank" rel="noopener" class="buy-button">Buy Here</a>
         </div>
     </section>
@@ -489,10 +504,15 @@
     To bring it back, delete the word "hidden" from the <section> tag below.
     -->
     <section class="product" id="uniborn" hidden>
-        <div class="product-text">
+        <div class="product-head">
             <div class="badge-row"><span class="badge badge-soon">Coming Soon</span></div>
             <h2>Ballad of the Uniborn</h2>
             <p class="subtitle">The Hornbook for Uniborn Species, Lore, and Quest</p>
+        </div>
+        <div class="product-media">
+            <img src="BALLAD_OF_THE_UNIBORN.png" width="611" height="790" alt="Ballad of the Uniborn cover" class="product-image" loading="lazy">
+        </div>
+        <div class="product-text">
             <p>A complete guide to introducing whimsy and vibrant magic into your campaign:</p>
             <ul class="item-list">
                 <li><strong class="highlight">Uniborn Species:</strong> Dive deep into the Angelic Uniborn and the whimsical Faerie Uniborn, including unique abilities like the multi-target Rainbow Blast healing.</li>
@@ -502,9 +522,6 @@
             </ul>
             <p class="price">Price: $4.95</p>
             <p><strong class="highlight">Release date coming soon!</strong></p>
-        </div>
-        <div class="product-media">
-            <img src="BALLAD_OF_THE_UNIBORN.png" width="611" height="790" alt="Ballad of the Uniborn cover" class="product-image" loading="lazy">
         </div>
     </section>
     </div>
@@ -519,12 +536,19 @@
 
     <!-- ===== I SAW GOODY ANN DANCING WITH THE DEVIL (coming soon) ===== -->
     <section class="product" id="goody-ann">
-        <div class="product-text">
+        <div class="product-head">
             <div class="badge-row"><span class="badge badge-soon">Coming Soon</span></div>
             <h2>I Saw Goody Ann Dancing with the Devil</h2>
             <p class="subtitle">A One-Page RPG of Witch Trials and Wicked Accusations</p>
             <p class="meta">4 to 6 players &middot; Pens and scrap paper</p>
-
+        </div>
+        <div class="product-media">
+            <figure class="image-figure">
+                <img src="GOODY_ANN.jpg" width="1368" height="1181" alt="Woodcut of witches and devils dancing in a circle" class="product-image" loading="lazy">
+                <figcaption class="image-credit">Woodcut, 1720. <a href="https://wellcomecollection.org/works/ycew9rzz" target="_blank" rel="noopener">Wellcome Collection</a> (public domain)</figcaption>
+            </figure>
+        </div>
+        <div class="product-text">
             <p>Superstitious villagers stand trial for witchcraft, and everyone at the table is guilty of something.</p>
             <ul class="item-list">
                 <li><strong class="highlight">Point the Finger:</strong> Each turn, one player is the Accused and everyone else writes a secret accusation of witchcraft. ("I saw Ann turn goat milk to blood!")</li>
@@ -535,22 +559,20 @@
 
             <p class="price"><strong class="highlight">Releasing this month!</strong></p>
         </div>
-        <div class="product-media">
-            <figure class="image-figure">
-                <img src="GOODY_ANN.jpg" width="1368" height="1181" alt="Woodcut of witches and devils dancing in a circle" class="product-image" loading="lazy">
-                <figcaption class="image-credit">Woodcut, 1720. <a href="https://wellcomecollection.org/works/ycew9rzz" target="_blank" rel="noopener">Wellcome Collection</a> (public domain)</figcaption>
-            </figure>
-        </div>
     </section>
 
     <!-- ===== Wizard Apocalypse (free, itch.io) ===== -->
     <section class="product reversed" id="wizard-apocalypse">
-        <div class="product-text">
+        <div class="product-head">
             <div class="badge-row"><span class="badge badge-free">Free One-Page RPG</span></div>
             <h2>Wizard Apocalypse</h2>
             <p class="subtitle">Quarreling wizards wander a post-apocalyptic wasteland blighted by their own magic.</p>
             <p class="meta">About 30 minutes &middot; A pen and 7 homemade Spell cards per player</p>
-
+        </div>
+        <div class="product-media">
+            <img src="WIZARD-APOCALYPSE.jpg" width="1275" height="1650" alt="Wizard Apocalypse one-page RPG" class="product-image" loading="lazy">
+        </div>
+        <div class="product-text">
             <p>An ultra-light, one-page game of quick, chaotic fun. Learn it in five minutes:</p>
             <ul class="item-list">
                 <li><strong class="highlight">Name Your Wizard:</strong> Invent the most ridiculous wizard name you can, then dream up the magical Blights plaguing the land.</li>
@@ -560,8 +582,7 @@
 
             <p class="price">Price: Free</p>
         </div>
-        <div class="product-media">
-            <img src="WIZARD-APOCALYPSE.jpg" width="1275" height="1650" alt="Wizard Apocalypse one-page RPG" class="product-image" loading="lazy">
+        <div class="product-buy">
             <a href="https://wonderstone-workshop.itch.io/wizardapocalypse" target="_blank" rel="noopener" class="buy-button">Get It on itch.io</a>
         </div>
     </section>
