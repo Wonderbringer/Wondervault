@@ -45,6 +45,7 @@
             display: flex;
             flex-direction: column;
             padding: 20px 5%;
+            padding-top: 60px;
             background-color: #0b1a24;
             background-image:
                 linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.45)),
@@ -74,42 +75,104 @@
             gap: 12px 24px;
         }
 
+        /* ---------- Floating menu ---------- */
+        .site-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 10px max(5%, calc((100% - 1200px) / 2));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: transparent;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        /* Once you scroll past the header it gets a solid, blurred backing */
+        .site-nav.scrolled {
+            background-color: rgba(8, 6, 16, 0.92);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+        }
+        .nav-logo {
+            height: 38px;
+            width: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .site-nav.scrolled .nav-logo { opacity: 1; visibility: visible; }
         .nav-links {
             list-style: none;
-            margin: 0;
+            margin: 0 0 0 auto;
             padding: 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px 22px;
+            justify-content: flex-end;
+            gap: 4px 22px;
         }
         .nav-links a {
+            display: inline-block;
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            font-size: clamp(0.9rem, 2.6vw, 1.05rem);
+            font-size: clamp(0.85rem, 2.6vw, 1.05rem);
             letter-spacing: 0.5px;
             text-shadow: 0 0 6px rgba(0, 0, 0, 0.95);
-            padding: 6px 0;               /* bigger tap target */
+            padding: 8px 0;               /* bigger tap target */
             border-bottom: 2px solid transparent;
             transition: border-color 0.2s, color 0.2s;
+            white-space: nowrap;
         }
         .nav-links a:hover, .nav-links a:focus-visible { color: #CFC5FF; border-bottom-color: #8A7BE0; }
+        @media (max-width: 420px) {
+            .nav-logo { height: 30px; }
+            .nav-links { gap: 2px 14px; }
+        }
 
-        /* Smooth jump to sections; leave a little room above the heading */
+        /* Smooth jump to sections, landing just below the floating menu */
         html { scroll-behavior: smooth; }
         @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-        .product-group, .about { scroll-margin-top: 10px; }
+        .product-group, .about { scroll-margin-top: 58px; }
 
-        /* Category headings */
-        .product-group { width: min(90%, 1000px); margin: 0 auto; padding-top: 40px; }
-        .product-group + .product-group { border-top: 1px solid #1d1d1d; margin-top: 20px; }
+        /* ---------- Category bands ---------- */
+        .product-group {
+            padding: 80px max(5%, calc((100% - 1000px) / 2)) 30px;
+        }
+        .group-dnd {
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(106, 90, 205, 0.28), transparent 60%),
+                linear-gradient(180deg, #0f0b1f 0%, #07060d 100%);
+            border-top: 3px solid #6A5ACD;
+        }
+        .group-200 {
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(200, 80, 42, 0.25), transparent 60%),
+                linear-gradient(180deg, #1a0c08 0%, #0a0605 100%);
+            border-top: 3px solid #C8502A;
+        }
+        .group-header { margin-bottom: 10px; }
+        .group-eyebrow {
+            margin: 0 0 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #9a9a9a;
+        }
         .group-title {
             margin: 0;
-            font-size: clamp(1.6rem, 4.5vw, 2.2rem);
-            color: #A08CDA;
+            font-size: clamp(2.2rem, 7vw, 3.4rem);
+            line-height: 1.1;
             letter-spacing: 1px;
+            color: #fff;
         }
+        .group-dnd .group-title { color: #CFC5FF; }
+        .group-200 .group-title { color: #FFC7A8; }
+        .group-tagline { margin: 10px 0 0; max-width: 560px; color: #C8C8C8; }
         .product-group .product { width: 100%; }
+        .product-group .product + .product:not([hidden]) { border-top-color: rgba(255, 255, 255, 0.08); }
 
         .logo {
             width: clamp(120px, 22vw, 190px);
@@ -144,7 +207,7 @@
 
         /* ---------- Products ---------- */
         .products {
-            padding: 30px 0 10px;
+            padding: 0;
         }
 
         .product {
@@ -294,15 +357,14 @@
 
         /* ---------- About ---------- */
         .about {
-            width: min(90%, 1100px);
-            margin: 0 auto;
-            padding: 60px 0 70px;
-            border-top: 1px solid #1d1d1d;
+            padding: 80px max(5%, calc((100% - 1100px) / 2)) 80px;
+            background: linear-gradient(180deg, #121212 0%, #050505 100%);
+            border-top: 3px solid #555;
             text-align: left;
         }
         .about h2 {
             margin: 0 0 12px;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: clamp(2.2rem, 7vw, 3.4rem);
             color: #fff;
             letter-spacing: 1px;
         }
@@ -369,15 +431,19 @@
 </head>
 <body>
 
-<header class="hero">
-    <nav class="navbar">
+<nav class="site-nav" id="site-nav" aria-label="Main">
+    <a href="#top" aria-label="Back to top"><img class="nav-logo" src="WONDERSTONE_LOGO.png" width="750" height="391" alt="Wonderstone Workshop"></a>
+    <ul class="nav-links">
+        <li><a href="#dnd">D&amp;D 5.5</a></li>
+        <li><a href="#200-word-rpgs">200-Word RPGs</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</nav>
+
+<header class="hero" id="top">
+    <div class="navbar">
         <img class="logo" src="WONDERSTONE_LOGO.png" width="750" height="391" alt="Wonderstone Workshop">
-        <ul class="nav-links">
-            <li><a href="#dnd">D&amp;D 5.5</a></li>
-            <li><a href="#200-word-rpgs">200-Word RPGs</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
-    </nav>
+    </div>
     <div class="hero-text">
         <h1 class="display-font">WONDERSTONE WORKSHOP</h1>
         <p>Magical TTRPG Creations</p>
@@ -387,8 +453,12 @@
 <main class="products">
 
     <!-- ===================== D&D 5.5 ===================== -->
-    <div class="product-group" id="dnd">
-        <h2 class="group-title display-font">D&amp;D 5.5</h2>
+    <div class="product-group group-dnd" id="dnd">
+        <div class="group-header">
+            <p class="group-eyebrow">Adventures &amp; Supplements</p>
+            <h2 class="group-title display-font">D&amp;D 5.5</h2>
+            <p class="group-tagline">For the 2024 revision of the Dungeons &amp; Dragons fifth edition rules.</p>
+        </div>
 
     <!-- ===== Malice's Pits & Pendulums (coming soon) ===== -->
     <section class="product" id="pits-and-pendulums">
@@ -468,8 +538,12 @@
     </div>
 
     <!-- ===================== 200-WORD RPGs ===================== -->
-    <div class="product-group" id="200-word-rpgs">
-        <h2 class="group-title display-font">200-Word RPGs</h2>
+    <div class="product-group group-200" id="200-word-rpgs">
+        <div class="group-header">
+            <p class="group-eyebrow">Tiny Games, Big Chaos</p>
+            <h2 class="group-title display-font">200-Word RPGs</h2>
+            <p class="group-tagline">Complete games small enough to learn in minutes and play tonight.</p>
+        </div>
 
     <!-- ===== I SAW GOODY ANN DANCING WITH THE DEVIL (coming soon) ===== -->
     <section class="product" id="goody-ann">
@@ -570,6 +644,16 @@
     </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Give the floating menu a solid background once you scroll past the top
+    (function () {
+        var nav = document.getElementById('site-nav');
+        function update() { nav.classList.toggle('scrolled', window.scrollY > 80); }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+</script>
 </body>
 </html>
