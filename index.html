@@ -275,21 +275,42 @@
         .badge-free { background-color: #2E8B57; }
         .badge-soon { background-color: #C8502A; }
 
+        /*
+         * Buttons: solid outline, and on hover the button lifts and a hard
+         * (no-blur) shadow appears under it. Light "ink" color so it reads on
+         * the dark page.
+         */
         .buy-button {
+            --ink: #EDE6D6;
             display: block;                  /* real block so padding and width behave */
             width: 100%;
             max-width: 300px;
-            padding: 15px 20px;
-            border-radius: 8px;
+            padding: 13px 20px;
+            border: 2px solid var(--ink);
+            border-radius: 999px;            /* pill shape */
             background-color: #6A5ACD;
             color: #fff;
             font-size: 1.15em;
             font-weight: bold;
             text-align: center;
             text-decoration: none;
-            transition: background-color 0.3s;
+            box-shadow: 0 0 0 var(--ink);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
-        .buy-button:hover, .buy-button:focus-visible { background-color: #7B68EE; }
+        .buy-button:focus-visible { outline: 3px solid #CFC5FF; outline-offset: 3px; }
+        @media (hover: hover) {
+            .buy-button:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 4px 0 var(--ink);
+            }
+        }
+        .buy-button:active {
+            transform: translateY(0);
+            box-shadow: 0 0 0 var(--ink);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .buy-button { transition: none; }
+        }
 
         /* Product text is left-aligned on every screen size */
 
