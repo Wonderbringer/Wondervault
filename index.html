@@ -252,6 +252,45 @@
             .product-media { order: -1; }
         }
 
+        /* ---------- About ---------- */
+        .about {
+            width: min(90%, 1100px);
+            margin: 0 auto;
+            padding: 60px 0 70px;
+            border-top: 1px solid #1d1d1d;
+            text-align: center;
+        }
+        .about h2 {
+            margin: 0 0 12px;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .about-intro {
+            max-width: 640px;
+            margin: 0 auto 45px;
+            color: #C8C8C8;
+        }
+        .team {
+            display: grid;
+            grid-template-columns: 1fr;      /* phones: stacked */
+            gap: 45px;
+        }
+        @media (min-width: 800px) {
+            .team { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        }
+        .member img {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(106, 90, 205, 0.4);
+        }
+        .member h3 { margin: 0; font-size: 1.3em; color: #fff; }
+        .member .role { margin: 2px 0 12px; font-style: italic; color: #A08CDA; }
+        .member p.bio { margin: 0 auto; max-width: 340px; font-size: 0.95em; color: #D0D0D0; }
+
         /* ---------- Footer ---------- */
         .site-footer {
             padding: 40px 20px;
@@ -427,6 +466,32 @@
     </section>
 
 </main>
+
+<section class="about" id="about">
+    <h2 class="display-font">About Us</h2>
+    <p class="about-intro">Wonderstone Workshop is a small, independent tabletop RPG studio making games that are easy to pick up and hard to forget.</p>
+
+    <div class="team">
+        <div class="member">
+            <img src="ROSS_WADE.jpg" width="450" height="450" alt="Ross Wade" loading="lazy">
+            <h3>Ross Wade</h3>
+            <p class="role">Head Writer &amp; Game Designer</p>
+            <p class="bio">Ross is a New York City animation writer for shows including <em>P. King Duckling</em> (Disney Junior), <em>Super Wings</em> (Universal Kids), and <em>The Grossery Gang</em>. His musical <em>Scheme of the Super Bullies</em> was part of the New York Children's Theater Festival. Most Wonderstone games begin with Ross.</p>
+        </div>
+        <div class="member">
+            <img src="TAYLOR_PAVLIK.jpg" width="512" height="512" alt="Taylor Pavlik with a cat" loading="lazy">
+            <h3>Taylor Pavlik</h3>
+            <p class="role">Writer &amp; Game Designer</p>
+            <p class="bio">Taylor is the managing editor of the literary magazine <em>Midnight Breakfast</em> and a project manager at the GRACE Communications Foundation, with more than a decade in print and digital media. He's the reason our wildest ideas actually make it to the table, on time.</p>
+        </div>
+        <div class="member">
+            <img src="DAVID_GAGNE.jpg" width="600" height="600" alt="David Gagne with his dog" loading="lazy">
+            <h3>David Gagne</h3>
+            <p class="role">Creative Director &amp; Artist</p>
+            <p class="bio">David is a Senior Graphic Designer at <a href="https://www.givelively.org/" target="_blank" rel="noopener">Give Lively</a> and runs a freelance design business at <a href="https://www.dgagne.com/" target="_blank" rel="noopener">dgagne.com</a>. He's also a former professional music producer who makes music as <a href="https://www.dgagne.com/fantazmz" target="_blank" rel="noopener">Fantazmz</a> and plays weekly at The Skillman in Sunnyside, Queens.</p>
+        </div>
+    </div>
+</section>
 
 <footer class="site-footer">
     <div class="footer-container">
