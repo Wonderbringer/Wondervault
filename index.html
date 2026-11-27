@@ -102,7 +102,7 @@
 
         /* ---------- Products ---------- */
         .products {
-            padding: 30px 0 60px;
+            padding: 30px 0 10px;
         }
 
         .product {
@@ -112,14 +112,14 @@
             display: grid;
             grid-template-columns: 1fr;      /* phones: one column, cover on top */
             gap: 30px;
-            border-bottom: 1px solid #1d1d1d;
         }
-        .product:last-child { border-bottom: none; }
+        /* Divider between products (hidden ones don't leave a stray line) */
+        .product + .product:not([hidden]) { border-top: 1px solid #1d1d1d; }
 
         .product-media {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
         }
 
@@ -131,7 +131,7 @@
         }
 
         .image-figure { margin: 0; width: 100%; max-width: 300px; }
-        .image-credit { margin-top: 8px; font-size: 0.75rem; color: #888; text-align: center; }
+        .image-credit { margin-top: 8px; font-size: 0.75rem; color: #888; text-align: left; }
         .image-credit a { color: #999; }
 
         /* Placeholder covers for products that don't have art yet */
@@ -234,8 +234,7 @@
         }
         .buy-button:hover, .buy-button:focus-visible { background-color: #7B68EE; }
 
-        /* Phones: center the headings above left-aligned body text */
-        .product-text .badge-row, .product-text h2, .product-text .subtitle, .product-text .meta { text-align: center; }
+        /* Product text is left-aligned on every screen size */
 
         /* Wider screens: two columns, alternating sides */
         @media (min-width: 800px) {
@@ -246,7 +245,6 @@
             }
             .product.reversed { grid-template-columns: 1fr 2fr; }
             .product.reversed .product-media { order: -1; }
-            .product-text .badge-row, .product-text h2, .product-text .subtitle, .product-text .meta { text-align: left; }
         }
         @media (max-width: 799px) {
             .product-media { order: -1; }
@@ -258,7 +256,7 @@
             margin: 0 auto;
             padding: 60px 0 70px;
             border-top: 1px solid #1d1d1d;
-            text-align: center;
+            text-align: left;
         }
         .about h2 {
             margin: 0 0 12px;
@@ -268,7 +266,7 @@
         }
         .about-intro {
             max-width: 640px;
-            margin: 0 auto 45px;
+            margin: 0 0 45px;
             color: #C8C8C8;
         }
         .team {
@@ -282,14 +280,14 @@
         .member img {
             width: 160px;
             height: 160px;
-            margin: 0 auto 18px;
+            margin: 0 0 18px;
             border-radius: 8px;            /* matches the product covers */
             object-fit: cover;
             box-shadow: 0 0 20px rgba(106, 90, 205, 0.4);
         }
         .member h3 { margin: 0; font-size: 1.3em; color: #fff; }
         .member .role { margin: 2px 0 12px; font-style: italic; color: #A08CDA; }
-        .member p.bio { margin: 0 auto; max-width: 340px; font-size: 0.95em; color: #D0D0D0; text-align: left; }
+        .member p.bio { margin: 0; max-width: 340px; font-size: 0.95em; color: #D0D0D0; text-align: left; }
 
         /* ---------- Footer ---------- */
         .site-footer {
